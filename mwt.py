@@ -68,7 +68,7 @@ s = "let me not to the marriage of true minds admit impediments love is not love
 success = 1
 while (success < 2):
 	#red light on!
-	while (len(t) < 540):
+	while (len(t) < 560):
 		addletter();
 	#print (t)
 	runs = (runs + int(1))
