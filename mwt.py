@@ -1,4 +1,7 @@
-#raspi gpio import
+import RPi.GPIO as GPIO
+GPIO.setmode(GPIO.BOARD)
+GPIO.setup(11, GPIO.OUT)
+GPIO.setup(12, GPIO.OUT)
 import random
 global success
 random.seed()
@@ -67,15 +70,18 @@ def addletter():
 s = "let me not to the marriage of true minds admit impediments love is not love which alters when it alteration finds or bends with the remover to remove o no it is an ever-fixed mark that looks on tempests and is never shaken it is the star to every wandering bark whose worths unknown although his height be taken loves not times fool though rosy lips and cheeks within his bending sickles compass come love alters not with his brief hours and weeks but bears it out even to the edge of doom if this be error and upon me proved i never writ nor no man ever loved"
 success = 1
 while (success < 2):
-	#red light on!
+		GPIO.output(12, GPIO.LOW)
+		GPIO.output(11, GPIO.HIGH)
 	while (len(t) < 560):
 		addletter();
 	#print (t)
 	runs = (runs + int(1))
 	print ("trys: ",runs)
 	if (t == s):
-		#green light on
+		GPIO.output(11, GPIO.LOW)
+		GPIO.output(12, GPIO.HIGH)
 		success = 2
+		print (t)
 	else:
 		t = t[1:]
 		addletter();
