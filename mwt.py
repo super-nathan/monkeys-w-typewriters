@@ -1,5 +1,6 @@
 #raspi gpio import
 import random
+global success
 random.seed()
 t = "a"
 runs = int(0)
@@ -63,13 +64,13 @@ def addletter():
 		b = " "
 	t = (t+b)
 # This is the sonnet 
-s = ["let me not to the marriage of true minds admit impediments love is not love which alters when it alteration finds or bends with the remover to remove o no it is an ever-fixed mark that looks on tempests and is never shaken it is the star to every wandering bark whose worths unknown although his height be taken loves not times fool though rosy lips and cheeks within his bending sickles compass come love alters not with his brief hours and weeks but bears it out even to the edge of doom if this be error and upon me proved i never writ nor no man ever loved"]
+s = "let me not to the marriage of true minds admit impediments love is not love which alters when it alteration finds or bends with the remover to remove o no it is an ever-fixed mark that looks on tempests and is never shaken it is the star to every wandering bark whose worths unknown although his height be taken loves not times fool though rosy lips and cheeks within his bending sickles compass come love alters not with his brief hours and weeks but bears it out even to the edge of doom if this be error and upon me proved i never writ nor no man ever loved"
 success = 1
-while (success == 1):
+while (success < 2):
 	#red light on!
 	while (len(t) < 540):
 		addletter();
-	print (t)
+	#print (t)
 	runs = (runs + int(1))
 	print ("trys: ",runs)
 	if (t == s):
