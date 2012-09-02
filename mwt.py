@@ -70,12 +70,13 @@ while (success == 1):
 	while (len(t) < 540):
 		addletter();
 	print (t)
-	addletter();
 	runs = (runs + int(1))
 	print ("trys: ",runs)
-	if t == s:
+	if (t == s):
 		#green light on
-		success -- 2
+		success = 2
 	else:
 		t = t[1:]
+		addletter();
+
 		
