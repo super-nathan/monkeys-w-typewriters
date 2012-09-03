@@ -1,3 +1,4 @@
+# If you uncomment the degubbing print options you will get more display and might be nice to test the program, but it will drastically decrease performance.
 import RPi.GPIO as GPIO
 GPIO.setmode(GPIO.BOARD)
 GPIO.setup(11, GPIO.OUT)
@@ -70,13 +71,13 @@ def addletter():
 s = "let me not to the marriage of true minds admit impediments love is not love which alters when it alteration finds or bends with the remover to remove o no it is an ever-fixed mark that looks on tempests and is never shaken it is the star to every wandering bark whose worths unknown although his height be taken loves not times fool though rosy lips and cheeks within his bending sickles compass come love alters not with his brief hours and weeks but bears it out even to the edge of doom if this be error and upon me proved i never writ nor no man ever loved"
 success = 1
 while (success < 2):
-		GPIO.output(12, GPIO.LOW)
-		GPIO.output(11, GPIO.HIGH)
+	GPIO.output(12, GPIO.LOW)
+	GPIO.output(11, GPIO.HIGH)
 	while (len(t) < 560):
 		addletter();
 	#print (t)
 	runs = (runs + int(1))
-	print ("trys: ",runs)
+	# print ("trys: ",runs)  # For DEBUG
 	if (t == s):
 		GPIO.output(11, GPIO.LOW)
 		GPIO.output(12, GPIO.HIGH)
@@ -84,6 +85,8 @@ while (success < 2):
 		print (t)
 	else:
 		t = t[1:]
+		#print (t)    # For DEBUG
 		addletter();
+		#print (t)    # For DEBUG
 
 		
