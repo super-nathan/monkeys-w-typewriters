@@ -5,7 +5,7 @@ GPIO.setup(11, GPIO.OUT)
 GPIO.setup(12, GPIO.OUT)
 import random
 global success
-random.seed()
+# random.seed()# I really like recording # of times ran, but basically I get a giant number that is causing a program crash.
 t = "a"
 runs = int(0)
 def addletter():
@@ -76,7 +76,7 @@ while (success < 2):
 	while (len(t) < 560):
 		addletter();
 	#print (t)
-	runs = (runs + int(1))
+	# runs = (runs + int(1))  Un-comment this and the earlier comment to ennable run logging. I have debated writing this to a file instead of memory, but that will give me less cycles per second and will slow the code.
 	# print ("trys: ",runs)  # For DEBUG
 	if (t == s):
 		GPIO.output(11, GPIO.LOW)
