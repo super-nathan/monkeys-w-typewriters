@@ -1,3 +1,8 @@
+This program is written to be run on a Raspberry Pi
+It requires the Raspberry pi GPIO package available here: http://pypi.python.org/pypi/RPi.GPIO/0.3.1a
+
+If you desire to run this program on anything else you must first comment out the GPIO lines.
+
 Written 2012 by "Super" Nathan Weber
 Released to the public with GPL v3
 
