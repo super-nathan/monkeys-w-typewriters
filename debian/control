@@ -1,0 +1,11 @@
+Source: mwt
+Section: unknown
+Priority: extra
+Maintainer: "Super" Nathan Weber <supernathansunshine@gmail.com>
+Build-Depends: debhelper (>= 8.0.0)
+Homepage: https://github.com/super-nathan/monkeys-w-typewriters.git
+
+Package: mwt
+Architecture: all
+Depends: python3
+Description: Simple program to try and re-create a sonnet with random characters

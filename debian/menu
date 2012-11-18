@@ -1,0 +1,3 @@
+?package(mwt): needs=vc \
+        section=Applications/Tools \
+        title=MWT command=mwt \
