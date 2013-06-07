@@ -1,21 +1,50 @@
-# Maintainer: "Super" Nathan Weber <supernathansunshine@gmail.com>
 
-pkgname=mwt
-pkgver=0.3
+
+# Maintainer: "Super" Nathan Weber <supernathansunshine@gmail.com>
+pkgname=mwt-git
+pkgver=20130609
 pkgrel=1
-epoch=
-pkgdesc="A utility to try and match a Shakespearean sonnet with random intergers, usefull for stress testing"
-arch=(any)
-url="http://github.com/super-nathan/monkeys-w-typwriters"
+pkgdesc="Cryptography program for plain text"
+arch=('i686' 'x86_64')
+url="git://github.com/super-nathan/monkeys-w-typewriters.git"
 license=('MIT')
-depends=()
+depends=('python')
+makedepends=('git')
 provides=(mwt)
-changelog=ChangeLog.mwt
-source=($pkgname.tar.gz)
-md5sums=('e17d9278ddf3a8c79894f9261dcca70d')
-package() {
-	mkdir -p ${pkgdir}/usr/bin
-    cp mwt/mwt ${pkgdir}/usr/bin/mwt
-    mkdir -p ${pkgdir}/usr/share/man/man1
-    cp mwt/mwt.1.gz ${pkgdir}/usr/share/man/man1/mwt.1.gz
+conflicts=(mwt)
+source=('git://github.com/super-nathan/monkeys-w-typewriters.git')
+md5sums=('SKIP')
+
+_gitname=mwt
+_gitroot='git://github.com/super-nathan/monkeys-w-typewriters.git'
+
+
+build() {
+  cd "$srcdir"
+  msg "Connecting to GIT server...."
+
+  if [[ -d "$_gitname" ]]; then
+    cd "$_gitname" && git pull origin
+    msg "The local files are updated."
+  else
+    git clone "$_gitroot" "$_gitname"
+  fi
+
+  msg "GIT checkout done or server timeout"
+  msg "Starting build..."
+
+  rm -rf "$srcdir/{$_gitname}-build"
+  git clone "$srcdir/$_gitname" "$srcdir/{$_gitname}-build"
+  cd "$srcdir/{$_gitname}-build"
+  gzip mwt.1
 }
+
+package() {
+	cd "$srcdir/{$_gitname}-build"
+	mkdir -p ${pkgdir}/usr/bin
+    cp mwt ${pkgdir}/usr/bin/mwt
+    mkdir -p ${pkgdir}/usr/share/man/man1
+    cp mwt.1.gz ${pkgdir}/usr/share/man/man1/mwt.1.gz
+}
+
+# vim:set ts=2 sw=2 et:
