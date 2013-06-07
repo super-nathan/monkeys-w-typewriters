@@ -4,7 +4,7 @@
 pkgname=mwt-git
 pkgver=20130609
 pkgrel=1
-pkgdesc="MWT is a stress testing tool that tries to recreat a monkeys-on-a-typewriter expiriment using a string of random intergers to try and re-create Shakespeare Sonnet 116"
+pkgdesc="MWT is a stress testing tool that tries to re-create a monkeys-on-a-typewriter expiriment using a string of random intergers to try and re-create Shakespeare Sonnet 116"
 arch=('i686' 'x86_64')
 url="http://github.com/super-nathan/monkeys-w-typewriters"
 license=('MIT')

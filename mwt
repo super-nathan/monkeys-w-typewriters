@@ -1,17 +1,10 @@
 #!/usr/bin/python3
-
-# If you uncomment the degubbing print options you will get more display and might be nice to test the program, but it will drastically decrease performance.
-#import RPi.GPIO as GPIO
-#GPIO.setmode(GPIO.BOARD)
-#GPIO.setup(11, GPIO.OUT)
-#GPIO.setup(12, GPIO.OUT)
 import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument("-v", "--verbosity", action="count", default=0)
 args = parser.parse_args()
 import random
 global success
-# random.seed()# I really like recording # of times ran, but basically I get a giant number that is causing a program crash.
 t = "a"
 runs = int(0)
 def addletter():
@@ -77,17 +70,11 @@ def addletter():
 s = "let me not to the marriage of true minds admit impediments love is not love which alters when it alteration finds or bends with the remover to remove o no it is an ever-fixed mark that looks on tempests and is never shaken it is the star to every wandering bark whose worths unknown although his height be taken loves not times fool though rosy lips and cheeks within his bending sickles compass come love alters not with his brief hours and weeks but bears it out even to the edge of doom if this be error and upon me proved i never writ nor no man ever loved"
 success = 1
 while (success < 2):
-	#GPIO.output(12, GPIO.LOW)
-	#GPIO.output(11, GPIO.HIGH)
 	while (len(t) < 560):
 		addletter();
 	if args.verbosity >= 2 :
 		print (t)
-	# runs = (runs + int(1))  Un-comment this and the earlier comment to ennable run logging. I have debated writing this to a file instead of memory, but that will give me less cycles per second and will slow the code.
-	# print ("trys: ",runs)  # For DEBUG
 	if (t == s):
-		#GPIO.output(11, GPIO.LOW)
-		#GPIO.output(12, GPIO.HIGH)
 		success = 2
 		print (t)
 	else:
